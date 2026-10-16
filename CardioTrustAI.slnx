@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/CardioTrustAI.Backend/">
+    <Project Path="src/CardioTrustAI.Backend/CardioTrustAI.API/CardioTrustAI.API.csproj" />
+    <Project Path="src/CardioTrustAI.Backend/CardioTrustAI.Application/CardioTrustAI.Application.csproj" />
+    <Project Path="src/CardioTrustAI.Backend/CardioTrustAI.Domain/CardioTrustAI.Domain.csproj" />
+    <Project Path="src/CardioTrustAI.Backend/CardioTrustAI.Infrastructure/CardioTrustAI.Infrastructure.csproj" />
+  </Folder>
+</Solution>

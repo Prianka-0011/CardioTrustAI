@@ -1,0 +1,92 @@
+# Node.js / Angular / React
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+dist/
+**/dist/
+coverage/
+.npm/
+
+# .NET build artifacts
+[Bb]in/
+[Oo]bj/
+**/bin/
+**/obj/
+out/
+publish/
+artifacts/
+
+# Visual Studio metadata
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.sln.iml
+
+# .NET generated files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.tmp
+*.log
+*.ilk
+*.meta
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!**/packages/build/
+
+# Test results
+TestResults/
+[Tt]est[Rr]esult*/
+coverage.*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+secrets.json
+secrets.*.json
+appsettings.*.local.json
+
+# Certificates and private keys
+*.pfx
+*.p12
+*.key
+*.pem
+*.crt
+
+# Docker overrides
+docker-compose.override.yml
+
+# Python / AI development
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Temporary files
+*.bak
+*.swp
+*.orig
+*~
