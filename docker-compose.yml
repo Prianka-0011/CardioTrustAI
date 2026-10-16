@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  database-cardiotrustai:
+    image: postgres:15
+    container_name: cardiotrustai-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: CardioTrustAIDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: CardioTrustAI123!
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # networks:
+    #   - cardiotrustai-network
+  # cardiotrustai-service:
+  #   container_name: cardiotrustai-container
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "2029:2029"
+  #   depends_on:
+  #     - database-cardiotrustai
+  #   volumes:
+  #     - .:/cardiotrustai:cached
+  #     - /cardiotrustai/src/WebSpa/node_modules
+  #   environment:
+  #     # DB_HOST: cardiotrustai-sql
+  #     DB_HOST: cardiotrustai-postgres
+  #     DB_PORT: 5432
+  #     DB_NAME: CardioTrustAIDb
+  #     DB_USER: postgres
+  #     DB_PASS: CardioTrustAI123!
+  #     APPLICATION_URL: https://localhost:7238
+
+  #     # SMTP CONFIG
+  #     SMTP_ENABLED: "true"
+  #     SMTP_SERVER: smtp.gmail.com
+  #     SMTP_PORT: "587"
+  #     SMTP_USERNAME: priankanew0011@gmail.com
+  #     SMTP_PASSWORD: gdaz jwfh iwvb waqa
+  #     SMTP_ENABLE_SSL: "true"
+  #     SMTP_NO_REPLY_EMAIL: priankanew0011@gmail.com
+  #     SMTP_NO_REPLY_NAME: NoReplay
+
+  #     TIME_ZONE_ID: Central Standard Time
+  #     FILES_DIRECTORY: /app/_files
+  #     TEMP_FILES_DIRECTORY: /app/_temp-files
+
+  #   networks:
+  #     - cardiotrustai-network 
+volumes:
+  postgres_data:
+
+networks:
+  cardiotrustai-network:
+    driver: bridge
