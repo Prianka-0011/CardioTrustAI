@@ -1,0 +1,388 @@
+
+<div class="list-page">
+
+  <div class="list-card">
+
+    <!-- TOOLBAR -->
+    <div class="list-toolbar">
+
+      <div class="list-toolbar-left">
+
+        <div class="list-heading">
+
+          <h2>Recordings</h2>
+
+          <span>
+            Manage your ECG recordings
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="toolbar-right">
+
+        <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
+
+          <mat-icon matPrefix>
+            search
+          </mat-icon>
+
+          <input
+            matInput
+            type="text"
+            placeholder="Search recordings..."
+            [(ngModel)]="searchText"
+            (input)="applyFilter()"
+          />
+
+        </mat-form-field>
+
+        <button mat-flat-button class="add-btn" (click)="openCreateDrawer()">
+
+          <mat-icon>add</mat-icon>
+          Add Recording
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="list-table-wrapper">
+
+      <table class="list-table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+
+              <button
+                type="button"
+                class="list-column-heading"
+                (click)="applySort('patientReference')">
+
+                <span>Patient Reference</span>
+
+                <i class="bi" [ngClass]="{
+                  'bi-caret-up-fill':
+                    sortColumn === 'patientReference' &&
+                    sortDirection === 'asc',
+
+                  'bi-caret-down-fill':
+                    sortColumn === 'patientReference' &&
+                    sortDirection === 'desc',
+
+                  'bi-unfold-more':
+                    sortColumn !== 'patientReference'
+                }"></i>
+
+              </button>
+
+            </th>
+
+            <th>
+
+              <button
+                type="button"
+                class="list-column-heading"
+                (click)="applySort('fileName')">
+
+                <span>File Name</span>
+
+                <i class="bi" [ngClass]="{
+                  'bi-caret-up-fill':
+                    sortColumn === 'fileName' &&
+                    sortDirection === 'asc',
+
+                  'bi-caret-down-fill':
+                    sortColumn === 'fileName' &&
+                    sortDirection === 'desc',
+
+                  'bi-unfold-more':
+                    sortColumn !== 'fileName'
+                }"></i>
+
+              </button>
+
+            </th>
+
+            <th>Format</th>
+
+            <th>Leads</th>
+
+            <th>Sampling Rate</th>
+
+            <th>Duration</th>
+
+            <th>
+
+              <button
+                type="button"
+                class="list-column-heading"
+                (click)="applySort('status')">
+
+                <span>Status</span>
+
+                <i class="bi" [ngClass]="{
+                  'bi-caret-up-fill':
+                    sortColumn === 'status' &&
+                    sortDirection === 'asc',
+
+                  'bi-caret-down-fill':
+                    sortColumn === 'status' &&
+                    sortDirection === 'desc',
+
+                  'bi-unfold-more':
+                    sortColumn !== 'status'
+                }"></i>
+
+              </button>
+
+            </th>
+
+            <th class="list-action-column">
+              Action
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let recording of pagedRecordings" class="list-row">
+
+            <!-- PATIENT REFERENCE -->
+            <td>
+
+              <span class="list-code">
+                {{ recording.patientReference }}
+              </span>
+
+            </td>
+
+            <!-- FILE NAME -->
+            <td>
+
+              <div class="list-item-cell">
+
+                <div class="list-item-avatar">
+
+                  <i class="bi bi-activity"></i>
+
+                </div>
+
+                <div class="list-item-details">
+
+                  <span class="list-item-name">
+                    {{ recording.fileName }}
+                  </span>
+
+                  <span class="list-item-subtitle">
+                    ECG Recording
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+            <!-- FORMAT -->
+            <td>
+              {{ recording.fileFormat | uppercase }}
+            </td>
+
+            <!-- LEADS -->
+            <td>
+              {{ recording.leadCount }}
+            </td>
+
+            <!-- SAMPLING RATE -->
+            <td>
+              {{ recording.samplingRateHz }} Hz
+            </td>
+
+            <!-- DURATION -->
+            <td>
+              {{ formatDuration(recording.durationSeconds) }}
+            </td>
+
+            <!-- STATUS -->
+            <td>
+
+              <span
+                class="list-code"
+                [ngClass]="getStatusClass(recording.status)">
+
+                {{ getStatusLabel(recording.status) }}
+
+              </span>
+
+            </td>
+
+            <!-- ACTION -->
+            <td class="list-action-column">
+
+              <button
+                type="button"
+                class="list-action"
+                title="Edit"
+                (click)="openEditDrawer(recording.id)">
+
+                <i class="bi bi-pencil-square"></i>
+
+              </button>
+
+            </td>
+
+          </tr>
+
+          <!-- EMPTY -->
+          <tr *ngIf="pagedRecordings.length === 0">
+
+            <td colspan="8" class="list-empty">
+
+              <i class="bi bi-search list-empty-icon"></i>
+
+              <strong>
+                No recordings found
+              </strong>
+
+              <span>
+                Try adjusting your search criteria
+              </span>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="list-footer">
+
+      <div class="list-rows-per-page">
+
+        <span>
+          Items per page
+        </span>
+
+        <select
+          class="list-page-size"
+          [value]="pageSize"
+          (change)="changePageSize(+$any($event.target).value)">
+
+          <option *ngFor="let size of pageSizeOptions" [value]="size">
+            {{ size }}
+          </option>
+
+        </select>
+
+      </div>
+
+      <span class="list-range">
+        {{ rangeLabel }}
+      </span>
+
+      <div class="list-pagination">
+
+        <button
+          type="button"
+          class="list-pagination-icon"
+          [disabled]="currentPage === 1"
+          (click)="goToPage(1)"
+          title="First page">
+
+          <i class="bi bi-chevron-double-left"></i>
+
+        </button>
+
+        <button
+          type="button"
+          class="list-pagination-icon"
+          [disabled]="currentPage === 1"
+          (click)="goToPage(currentPage - 1)"
+          title="Previous page">
+
+          <i class="bi bi-chevron-left"></i>
+
+        </button>
+
+        <span class="list-page-number">
+          {{ currentPage }}
+        </span>
+
+        <button
+          type="button"
+          class="list-pagination-icon"
+          [disabled]="currentPage >= totalPages"
+          (click)="goToPage(currentPage + 1)"
+          title="Next page">
+
+          <i class="bi bi-chevron-right"></i>
+
+        </button>
+
+        <button
+          type="button"
+          class="list-pagination-icon"
+          [disabled]="currentPage >= totalPages"
+          (click)="goToPage(totalPages)"
+          title="Last page">
+
+          <i class="bi bi-chevron-double-right"></i>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- SIDE DRAWER -->
+<!-- <app-side-drawer
+  [opened]="drawerOpen"
+  width="600px"
+  (closed)="closeDrawer()"
+  [headerTemplate]="drawerHeader">
+
+  <ng-container *ngIf="drawerOpen">
+
+    <app-recording-create-or-update
+      [recordingId]="selectedRecordingId"
+      (saved)="onRecordingSaved()"
+      (cancel)="closeDrawer()">
+
+    </app-recording-create-or-update>
+
+  </ng-container>
+
+</app-side-drawer>
+
+<ng-template #drawerHeader>
+
+  <div class="drawer-header-icon">
+    <mat-icon>monitor_heart</mat-icon>
+  </div>
+
+  <span>
+    {{
+      selectedRecordingId
+        ? 'Edit Recording Details'
+        : 'Create New Recording'
+    }}
+  </span>
+
+</ng-template> -->

@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-
-
+import { EcgRordingListComponent} from "./components/ecg-recording/ecg-recording-list/ecg-recording-list";
 export const CardioTrustRoutes: Routes = [
  
   {
@@ -14,8 +13,8 @@ export const CardioTrustRoutes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'ecg-recording',
-    component: DashboardComponent
+    path: 'ecg-recording-list',
+    component: EcgRordingListComponent
   },
   
 ] 

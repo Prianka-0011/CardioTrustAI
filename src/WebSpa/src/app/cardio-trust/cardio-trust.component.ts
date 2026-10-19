@@ -2,7 +2,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-import { MenuItem } from './interfaces/MenuItem';
+import { MenuItem } from './components/ecg-recording/interfaces/MenuItem';
 import { CommonModule } from '@angular/common';
 import { CommonService } from '../shared/services/common.service';
 import { ICurrentLoginUserDetail } from '../shared/services/ICurrentLoginUserDetail';
@@ -49,7 +49,7 @@ export class CardioTrustComponent implements OnInit {
     {
       label: 'ECG Recording',
       icon: 'bi bi-person-vcard',
-      route: 'ecg-recording',
+      route: 'ecg-recording-list',
       rolesPermission: [
         // CustomCategory.RoleType.Instructor,
         // CustomCategory.RoleType.Student,
@@ -67,25 +67,7 @@ export class CardioTrustComponent implements OnInit {
     //     { label: 'Create Course', icon: 'plus-circle', route: 'courses/create' }
     //   ]
     // },
-    {
-      label: 'Admin',
-      icon: 'bi bi-gear',
-      isOpen: false,
-      rolesPermission: [
-        // CustomCategory.RoleType.Instructor,
-      ],
-      children: [
-        { label: 'User List', icon: 'list', route: 'users' },
-        { label: 'Terms', icon: 'bi bi-person-vcard', route: 'terms' },
-        { label: 'Course List', icon: 'list', route: 'courses' },
-        { label: 'Course Offerings', icon: 'clipboard-check', route: 'course-offerings' },
-      ]
-    },
-
-    // { label: 'Assesment', icon: 'clipboard-check', route: 'assesments' },
-    // { label: 'Question Types', icon: 'clipboard-check', route: 'question-types' },
-
-    // { label: 'Settings', icon: 'gear', route: 'settings' }
+   
   ];
 
   constructor(private router: Router, private commonService: CommonService) {

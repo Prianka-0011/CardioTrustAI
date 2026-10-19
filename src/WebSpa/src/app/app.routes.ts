@@ -17,13 +17,13 @@ export const routes: Routes = [
     {
         path: 'auth',
         component: AuthComponent,
-        canActivate: [GuestGuard],
+        // canActivate: [GuestGuard],
         children: authRoutes
     },
     {
         path: 'cardio-trust',
         component: CardioTrustComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         children: CardioTrustRoutes },
     {
         path: 'change-password-smtp-link',

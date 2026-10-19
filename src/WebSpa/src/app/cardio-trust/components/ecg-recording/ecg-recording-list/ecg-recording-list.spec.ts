@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EcgRecording } from './ecg-recording';
+import { EcgRecordingList } from './ecg-recording-list';
 
-describe('EcgRecording', () => {
-  let component: EcgRecording;
-  let fixture: ComponentFixture<EcgRecording>;
+describe('EcgRecordingList', () => {
+  let component: EcgRecordingList;
+  let fixture: ComponentFixture<EcgRecordingList>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EcgRecording],
+      imports: [EcgRecordingList],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(EcgRecording);
+    fixture = TestBed.createComponent(EcgRecordingList);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
