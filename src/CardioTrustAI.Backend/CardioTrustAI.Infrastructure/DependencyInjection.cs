@@ -1,4 +1,5 @@
 
+using CardioTrustAI.Application.Recordings;
 using CardioTrustAI.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +18,7 @@ public static class DependencyInjection
     private static int DbPort =>
         int.TryParse(Environment.GetEnvironmentVariable("DB_PORT"), out var port)
             ? port
-            : 5432;
+            : 5433;
 
     private static string DbName =>
         Environment.GetEnvironmentVariable("DB_NAME")
@@ -47,6 +48,7 @@ public static class DependencyInjection
                     maxRetryCount: 5,
                     maxRetryDelay: TimeSpan.FromSeconds(10),
                     errorCodesToAdd: null)));
+        services.AddScoped<IRecordingRepository, RecordingRepository>();
 
         return services;
     }

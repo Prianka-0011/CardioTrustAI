@@ -5,7 +5,7 @@ using CardioTrustAI.Application.Recordings;
 using CardioTrustAI.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace CardioTrustAI.Infrastructure.Repositories;
+namespace CardioTrustAI.Infrastructure;
 
 public sealed class RecordingRepository : IRecordingRepository
 {
