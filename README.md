@@ -70,3 +70,10 @@ app.UseHttpsRedirection();         // 2️⃣ Security
 app.UseAuthentication();           // 3️⃣ Auth
 app.UseAuthorization();            // 4️⃣ Permissions
 app.MapControllers();  
+
+# Front End
+brew install mkcert
+brew install nss
+mkcert -install
+npm install
+npx ng serve --ssl --ssl-cert "./localhost+2.pem" --ssl-key "./localhost+2-key.pem"

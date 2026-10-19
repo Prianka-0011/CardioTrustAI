@@ -1,0 +1,183 @@
+
+> web-spa@0.0.0 build
+> ng build --verbose
+
+❯ Building...
+▲ [WARNING] NG8113: RouterLink is not used within the template of AuthComponent [plugin angular-compiler]
+
+    src/app/auth/auth.component.ts:9:4:
+      9 │     RouterLink,
+        ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: RouterLinkActive is not used within the template of AuthComponent [plugin angular-compiler]
+
+    src/app/auth/auth.component.ts:10:4:
+      10 │     RouterLinkActive,
+         ╵     ~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8113: RouterLink is not used within the template of ChangePasswordComponent [plugin angular-compiler]
+
+    src/app/auth/components/change-password/change-password.component.ts:11:39:
+      11 │   imports: [CommonModule, FormsModule, RouterLink],
+         ╵                                        ~~~~~~~~~~
+
+▲ [WARNING] NG8113: RouterLinkActive is not used within the template of SignInComponent [plugin angular-compiler]
+
+    src/app/auth/components/sign-in/sign-in.component.ts:14:4:
+      14 │     RouterLinkActive,
+         ╵     ~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107 [plugin angular-compiler]
+
+    src/app/cardio-trust/cardio-trust.component.html:71:50:
+      71 │               <div class="fw-bold">{{ userDetail?.fullName }}</div>
+         ╵                                                   ~~~~~~~~
+
+  Warning occurs in the template of component CardioTrustComponent.
+
+    src/app/cardio-trust/cardio-trust.component.ts:19:15:
+      19 │   templateUrl: './cardio-trust.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107 [plugin angular-compiler]
+
+    src/app/cardio-trust/cardio-trust.component.html:72:59:
+      72 │ ...       <div class="text-muted small">{{ userDetail?.email }}</div>
+         ╵                                                        ~~~~~
+
+  Warning occurs in the template of component CardioTrustComponent.
+
+    src/app/cardio-trust/cardio-trust.component.ts:19:15:
+      19 │   templateUrl: './cardio-trust.component.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+● [DEBUG] This call to "require" will not be bundled because the argument is not a string literal [unsupported-require-call]
+
+    node_modules/express/lib/view.js:72:13:
+      72 │     var fn = require(mod).__express;
+         ╵              ~~~~~~~
+
+● [DEBUG] Resolving import "supports-color" in directory "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/debug/src" of type "require-call"
+
+  Checking for package alias matches
+    Failed to find any package alias matches
+  Checking "supports-color" against the external pattern "*/main.server.mjs"
+  Read 4 entries for directory "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/debug/src"
+  Searching for "supports-color" in "node_modules" directories starting from "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/debug/src"
+    Parsed package name "supports-color" and package subpath "."
+    Checking for a package in the directory "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/supports-color"
+    Read 336 entries for directory "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules"
+    Failed to read directory "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/supports-color": open /Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/supports-color: no such file or directory
+    Failed to read directory "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/supports-color"
+    Attempting to load "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/supports-color" as a file
+      Checking for file "supports-color"
+      Checking for file "supports-color.mjs"
+      Checking for file "supports-color.js"
+      Checking for file "supports-color.cjs"
+      Checking for file "supports-color.ts"
+      Checking for file "supports-color.tsx"
+      Failed to find file "supports-color"
+    Attempting to load "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/supports-color" as a directory
+      Failed to read directory "/Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/node_modules/supports-color"
+
+● [DEBUG] Importing "supports-color" was allowed even though it could not be resolved because dynamic import failures appear to be handled here: [ignored-dynamic-import]
+
+    node_modules/debug/src/node.js:28:32:
+      28 │   const supportsColor = require('supports-color');
+         ╵                                 ~~~~~~~~~~~~~~~~
+
+  The handler for dynamic import failures is here:
+
+    node_modules/debug/src/node.js:32:2:
+      32 │ } catch (error) {
+         ╵   ~~~~~
+
+6 warnings
+(node:10717) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:10717) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ Building...
+Browser bundles     
+Initial chunk files  | Names            |  Raw size | Estimated transfer size
+main-L7VJHWZM.js     | main             | 361.49 kB |                97.88 kB
+chunk-AY4LCFTV.js    | -                | 720 bytes |               720 bytes
+styles-5INURTSO.css  | styles           |   0 bytes |                 0 bytes
+
+                     | Initial total    | 362.21 kB |                98.60 kB
+
+Lazy chunk files     | Names            |  Raw size | Estimated transfer size
+chunk-I22YU7QX.js    | browser          | 103 bytes |               103 bytes
+
+
+Server bundles      
+Initial chunk files  | Names            |  Raw size
+server.mjs           | server           | 822.04 kB |                        
+main.server.mjs      | main.server      | 794.81 kB |                        
+polyfills.server.mjs | polyfills.server | 235.00 kB |                        
+chunk-ITOR7NUX.mjs   | -                |   1.38 kB |                        
+chunk-KYQQYI4M.mjs   | -                |   1.01 kB |                        
+
+Lazy chunk files     | Names            |  Raw size
+chunk-KUERU4XA.mjs   | xhr2             |  12.17 kB |                        
+chunk-LYHAGGDF.mjs   | xhr2             |  12.07 kB |                        
+
+Prerendered 1 static route.
+Application bundle generation complete. [1.651 seconds] - 2026-10-18T18:16:56.363Z
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of AuthComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/auth/auth.component.ts:9:4:
+[37m      9 │     [32mRouterLink[37m,
+        ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLinkActive is not used within the template of AuthComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/auth/auth.component.ts:10:4:
+[37m      10 │     [32mRouterLinkActive[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of ChangePasswordComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/auth/components/change-password/change-password.component.ts:11:39:
+[37m      11 │   imports: [CommonModule, FormsModule, [32mRouterLink[37m],
+         ╵                                        [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLinkActive is not used within the template of SignInComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/auth/components/sign-in/sign-in.component.ts:14:4:
+[37m      14 │     [32mRouterLinkActive[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/cardio-trust/cardio-trust.component.html:71:50:
+[37m      71 │               <div class="fw-bold">{{ userDetail?.[32mfullName[37m }}</div>
+         ╵                                                   [32m~~~~~~~~[0m
+
+  Warning occurs in the template of component CardioTrustComponent.
+
+    src/app/cardio-trust/cardio-trust.component.ts:19:15:
+[37m      19 │   templateUrl: [32m'./cardio-trust.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: NG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator. Find more at https://v21.angular.dev/extended-diagnostics/NG8107[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/cardio-trust/cardio-trust.component.html:72:59:
+[37m      72 │ ...       <div class="text-muted small">{{ userDetail?.[32memail[37m }}</div>
+         ╵                                                        [32m~~~~~[0m
+
+  Warning occurs in the template of component CardioTrustComponent.
+
+    src/app/cardio-trust/cardio-trust.component.ts:19:15:
+[37m      19 │   templateUrl: [32m'./cardio-trust.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Output location: /Users/priankamondal/Projects/CardioTrustAI/src/WebSpa/dist/WebSpa
+

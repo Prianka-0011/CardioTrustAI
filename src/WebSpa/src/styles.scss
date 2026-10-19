@@ -1,1 +1,453 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import 'ngx-toastr/toastr';
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f6fa;
+}
+
+a {
+  cursor: pointer;
+}
+
+/* Material icons */
+.mat-icon {
+  font-family: 'Material Icons', 'Material Icons Outlined', 'Material Icons Round', 'Material Icons Sharp';
+  vertical-align: middle;
+}
+
+// .icon-btn {
+//   background: transparent;
+//   border: none;
+//   padding: 4px;
+//   font-size: 1.1rem;
+//   color: #2c3e50;
+//   cursor: pointer;
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 4px 10px;
+  font-size: 14px;
+}
+
+
+.icon-btn:hover {
+  color: #2c3e50;
+  /* optional hover color */
+}
+
+.icon-btn:focus {
+  outline: none;
+}
+
+.table-container {
+  max-width: 100%;
+  padding: 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  // border: thin dashed red;
+  border: 1px solid rgba(63, 81, 181, 0.15);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  h2 {
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 24px;
+    color: #2c3e50;
+  }
+}
+
+.test-row {
+  border: thin dashed red !important;
+}
+
+.test-row1 {
+  width: 100%;
+  border: thin dashed blue !important;
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+.custom-table {
+  border-radius: 14px !important;
+  overflow: hidden;
+
+  margin-bottom: 0;
+
+
+  thead th {
+    background: #2c3e50;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    // border: none;
+
+  }
+
+
+  tbody td {
+    font-size: 14px;
+    color: #374151;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  tbody tr {
+    transition: all 0.25s ease;
+    position: relative;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+
+  tbody tr:hover {
+
+    cursor: pointer;
+  }
+
+  .child-content-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .child-content-wrapper.expanded {
+    max-height: 100px;
+    /* adjust depending on content */
+    padding: 0.25rem 0.5rem;
+  }
+
+  .child-row {
+    font-size: 0.9rem;
+    background-color: #f8f9fa;
+  }
+
+  .child-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 4px 4px 4px 20px;
+  }
+
+
+  // tbody tr:hover::before {
+  //   content: '';
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   height: 100%;
+  //   width: 4px;
+  //   background: #3f51b5;
+  //   border: thin dashed red;
+  //   z-index: 1;
+  //   /* make sure it’s above the row background */
+  // }
+}
+
+/* =========================
+   PAGINATOR
+   ========================= */
+.custom-paginator {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  font-size: 13px;
+}
+
+/* Items per page */
+.page-size-label {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.page-size-select {
+  min-height: 32px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #f9fafb;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  width: auto;
+}
+
+.page-size-select:focus {
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.15);
+  border-color: rgba(63, 81, 181, 0.3);
+}
+
+/* Range label */
+.range-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #225aa8;
+}
+
+/* Pagination buttons */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(63, 81, 181, 0.1);
+}
+
+// // form floating label
+// .floating {
+//   position: relative;
+//   width: 100%;
+// }
+
+// .floating .form-select {
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   padding-right: 2.5rem;
+// }
+
+// .floating .form-control {
+//   width: 100%;
+//   // padding: 0.5rem 0.75rem;
+//    padding: 0.75rem 0.75rem;
+//   font-size: 0.9rem;
+//   border: 1px solid #ced4da;
+//   border-radius: 8px;
+//   outline: none;
+//   transition: border-color 0.2s;
+//   background: #fff;
+// }
+
+// .floating label {
+//   position: absolute;
+//   left: 0.75rem;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   font-size: 0.9rem;
+//   color: #6c757d;
+//   background: #fff;
+//   padding: 0 4px;
+//   pointer-events: none;
+//   transition: all 0.2s ease-out;
+// }
+
+// /* Label floats when input/select is focused OR has value */
+// .floating .form-control.active,
+// .floating .form-select.active {
+//   border-color: #2444e5;
+//   box-shadow: none;
+// }
+
+// .floating .form-control.active+label,
+// .floating .form-select.active+label {
+//   top: 0;
+//   transform: translateY(-50%);
+//   font-size: 0.75rem;
+//   color: #2444e5;
+// }
+/* Floating Controls */
+.floating {
+  position: relative;
+  width: 100%;
+}
+
+.floating .form-control,
+.floating .form-select {
+  width: 100%;
+  height: 52px;
+  padding: 14px 12px 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #2c3e50;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0 4px;
+  background-color: #fff;
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+/* Focus and active border */
+.floating .form-control:focus,
+.floating .form-control.active,
+.floating .form-select:focus,
+.floating .form-select.active {
+  border-color: #2444e5;
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(36 68 229 / 10%);
+}
+
+/* Float label when focused or active */
+.floating .form-control:focus + label,
+.floating .form-control.active + label,
+.floating .form-select:focus + label,
+.floating .form-select.active + label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: #2444e5;
+}
+
+/* Select dropdown */
+.floating .form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+}
+
+/* Password and text inputs with an eye icon */
+.floating .form-control[type='password'],
+.floating .form-control[type='text'] {
+  padding-right: 44px;
+}
+
+/* Password visibility icon */
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: #6c757d;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.warning-label {
+  font-size: 10px;
+}
+
+.submit-btn {
+  background: #2c3e50 !important;
+  border: none !important;
+}
+
+.edit-icon-btn {
+  border: none;
+  background: transparent;
+}
+
+//search bar
+.search-bar-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: thin solid red;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-input-wrapper input {
+  // padding-right: 2.5rem; /* space for icon */
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+  /* allows click through */
+}
+
+//date contorl
+input[type='date']:not(.active)::-webkit-datetime-edit {
+  color: transparent;
+}
+
+input[type='date'].active::-webkit-datetime-edit {
+  color: inherit;
+}
+
+.auth-container {
+  width: 600px;
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 30px;
+  // background: #ffffff;
+  border-radius: 12px;
+
+  // box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  // transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+// .container:hover {
+//   transform: translateY(-4px);
+//   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+// }
+
+h2 {
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+// .eye-icon {
+//   position: absolute;
+//   top: 50%;
+//   right: 15px;
+//   transform: translateY(-50%);
+//   cursor: pointer;
+//   color: #6c757d;
+//   font-size: 18px;
+// }

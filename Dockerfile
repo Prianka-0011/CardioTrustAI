@@ -13,11 +13,6 @@ RUN dotnet build ./CardioTrustAI.slnx -c Debug --no-restore
 
 WORKDIR /cardiotrustai/src/WebSpa
 
-RUN npm install --global corepack
-RUN corepack enable
-RUN yarn install
-RUN yarn build
-
 WORKDIR /cardiotrustai
 
 EXPOSE 2029

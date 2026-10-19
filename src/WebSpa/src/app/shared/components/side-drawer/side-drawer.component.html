@@ -1,0 +1,23 @@
+<div class="drawer-backdrop" *ngIf="opened" (click)="close()"></div>
+
+<div class="side-drawer" [ngStyle]="{ width: width }" [class.open]="opened">
+  <div class="drawer-header d-flex align-items-center justify-content-between">
+    
+    <!-- Use custom template if provided, otherwise fallback to string title -->
+    <ng-container *ngIf="headerTemplate; else defaultTitle">
+      <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+    </ng-container>
+
+    <ng-template #defaultTitle>
+      <h5 class="mb-0">{{ title }}</h5>
+    </ng-template>
+
+    <button class="btn icon-btn" (click)="close()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+
+  <div class="drawer-content">
+    <ng-content></ng-content>
+  </div>
+</div>
