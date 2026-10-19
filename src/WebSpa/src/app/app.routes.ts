@@ -4,12 +4,14 @@ import { GuestGuard } from './guards/guest.guard';
 import { AuthComponent } from './auth/auth.component';
 import { authRoutes } from './auth/auth-routing.module';
 import { ChangePasswordComponent } from './auth/components/change-password/change-password.component';
+import { CardioTrustComponent } from './cardio-trust/cardio-trust.component';
+import { CardioTrustRoutes } from './cardio-trust/cardio-trust-routing.module';
 
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'auth',
+        redirectTo: 'cardio-trust',
         pathMatch: 'full'
     },
     {
@@ -18,12 +20,11 @@ export const routes: Routes = [
         canActivate: [GuestGuard],
         children: authRoutes
     },
-    // {
-    //     path: 'learning-suite',
-    //     component: LearningSuiteComponent,
-    //     canActivate: [AuthGuard],
-    //     children: learningSuiteRoutes
-    // },
+    {
+        path: 'cardio-trust',
+        component: CardioTrustComponent,
+        canActivate: [AuthGuard],
+        children: CardioTrustRoutes },
     {
         path: 'change-password-smtp-link',
         component: ChangePasswordComponent,

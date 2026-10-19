@@ -47,9 +47,9 @@ export class CardioTrustComponent implements OnInit {
       ],
     },
     {
-      label: 'User Course',
+      label: 'ECG Recording',
       icon: 'bi bi-person-vcard',
-      route: 'course-offering-by-user',
+      route: 'ecg-recording',
       rolesPermission: [
         // CustomCategory.RoleType.Instructor,
         // CustomCategory.RoleType.Student,
@@ -99,12 +99,13 @@ export class CardioTrustComponent implements OnInit {
   }
 
   private loadUserAndBuildMenu(): void {
-    this.commonService.getCurrentLoginUser().subscribe(res => {
-      this.userDetail = res;
-      const roles = res.roles?.map(r => r.id) || [];
-      this.menu = this.filterMenuByRoles(this.menu, roles);
-      this.syncActiveMenu();
-    });
+    // this.commonService.getCurrentLoginUser().subscribe(res => {
+    //   this.userDetail = res;
+    //   const roles = res.roles?.map(r => r.id) || [];
+    //   this.menu = this.filterMenuByRoles(this.menu, roles);
+    //   this.syncActiveMenu();
+    // });
+    this.syncActiveMenu();
   }
 
   toggleSidebar() {

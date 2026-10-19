@@ -1,7 +1,8 @@
 
 import {
   ApplicationConfig,
-  importProvidersFrom
+  importProvidersFrom,
+  provideZoneChangeDetection
 } from '@angular/core';
 
 import {
@@ -10,19 +11,10 @@ import {
 } from '@angular/router';
 
 import {
-  provideClientHydration,
-  withEventReplay
-} from '@angular/platform-browser';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
-  withInterceptorsFromDi,
-  withFetch
+  withInterceptorsFromDi
 } from '@angular/common/http';
-
 import { ToastrModule } from 'ngx-toastr';
 
 import { routes } from './app.routes';
@@ -30,17 +22,13 @@ import { CredentialInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+
     provideRouter(routes, withComponentInputBinding()),
 
-    provideClientHydration(withEventReplay()),
-
-    provideHttpClient(
-      withFetch(),
-      withInterceptorsFromDi()
-    ),
+    provideHttpClient(withInterceptorsFromDi()),
 
     importProvidersFrom(
-      BrowserAnimationsModule,
       ToastrModule.forRoot({
         positionClass: 'toast-bottom-right',
         preventDuplicates: true

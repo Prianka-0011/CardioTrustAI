@@ -13,5 +13,9 @@ export const CardioTrustRoutes: Routes = [
     path: 'dashboard',
     component: DashboardComponent
   },
+  {
+    path: 'ecg-recording',
+    component: DashboardComponent
+  },
   
 ] 
