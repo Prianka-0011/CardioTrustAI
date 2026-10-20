@@ -1,6 +1,4 @@
-
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using CardioTrustAI.Domain.Enums;
 
 namespace CardioTrustAI.Domain.Entities;
@@ -33,16 +31,14 @@ public class Recording
     public int SamplingRateHz { get; set; }
 
     [Range(0.1, 86400)]
-    public double DurationSeconds { get; set; }
+    public double? DurationSeconds { get; set; }
 
     public DateTime? RecordedAtUtc { get; set; }
 
-    [Required]
-    public DateTime UploadedAtUtc { get; set; } = DateTime.UtcNow;
+   
+    public DateTime? UploadedAtUtc { get; set; } = DateTime.UtcNow;
 
-    [Required]
-    [EnumDataType(typeof(RecordingStatus))]
-    public RecordingStatus Status { get; set; } = RecordingStatus.Uploaded;
+    public Guid? Status { get; set; } = RecordingStatus.Uploaded;
 
     public bool IsDeleted { get; set; } = false;
 }

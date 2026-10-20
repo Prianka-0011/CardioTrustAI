@@ -28,7 +28,7 @@ namespace CardioTrustAI.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<double>("DurationSeconds")
+                    b.Property<double?>("DurationSeconds")
                         .HasColumnType("double precision");
 
                     b.Property<string>("FileFormat")
@@ -58,15 +58,15 @@ namespace CardioTrustAI.Infrastructure.Migrations
                     b.Property<int>("SamplingRateHz")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                    b.Property<Guid?>("Status")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("StoragePath")
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
 
-                    b.Property<DateTime>("UploadedAtUtc")
+                    b.Property<DateTime?>("UploadedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");

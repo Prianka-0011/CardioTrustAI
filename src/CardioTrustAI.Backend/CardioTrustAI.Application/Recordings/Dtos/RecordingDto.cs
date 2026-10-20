@@ -1,5 +1,6 @@
 
 using CardioTrustAI.Domain.Enums;
+
 namespace CardioTrustAI.Application.Recordings;
 
 public sealed class RecordingDto
@@ -18,11 +19,11 @@ public sealed class RecordingDto
 
     public int SamplingRateHz { get; set; }
 
-    public double DurationSeconds { get; set; }
+    public double? DurationSeconds { get; set; }
 
     public DateTime? RecordedAtUtc { get; set; }
 
-    public DateTime UploadedAtUtc { get; set; }
+    public DateTime? UploadedAtUtc { get; set; }
 
-    public RecordingStatus Status { get; set; }
+    public Guid? Status { get; set; }
 }

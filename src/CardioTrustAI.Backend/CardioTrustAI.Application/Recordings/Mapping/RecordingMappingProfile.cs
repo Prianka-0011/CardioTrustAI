@@ -37,7 +37,7 @@ public static class RecordingMapper
             DurationSeconds = dto.DurationSeconds,
             RecordedAtUtc = dto.RecordedAtUtc,
             UploadedAtUtc = dto.UploadedAtUtc,
-            Status = dto.Status
+            Status = dto.Status 
         };
     }
 }

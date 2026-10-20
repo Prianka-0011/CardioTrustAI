@@ -1,10 +1,16 @@
-
 namespace CardioTrustAI.Domain.Enums;
 
-public enum RecordingStatus
+public static class RecordingStatus
 {
-    Uploaded = 1,
-    Validating = 2,
-    ReadyForAnalysis = 3,
-    Invalid = 4
+    public static readonly Guid Uploaded =
+        Guid.Parse("b25ed7e3-b8f3-4f25-a02d-94d6c785e1e1");
+
+    public static readonly Guid Processing =
+        Guid.Parse("c50d418b-2242-4633-a39f-bee9a2da4630");
+
+    public static readonly Guid Processed =
+        Guid.Parse("418b411e-bbe7-44e3-b478-83e99f86807a");
+
+    public static readonly Guid Failed =
+        Guid.Parse("ef396a8e-b010-4786-9378-061df8ad3582");
 }
