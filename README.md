@@ -9,7 +9,7 @@ CardioTrustAI/
     │   ├── CardioTrustAI.Domain/
     │   ├── CardioTrustAI.Infrastructure/
     │   │
-    │   └── CardioTrustAI.AI/
+    │   └── CardioTrustAI.PythonAPI/
     │       ├── app/
     │       │   ├── main.py
     │       │   ├── api/
@@ -97,3 +97,130 @@ brew install nss
 mkcert -install
 npm install
 npx ng serve --ssl --ssl-cert "./localhost+2.pem" --ssl-key "./localhost+2-key.pem"
+
+# Phython Setup
+
+# 1. Navigate to the Python API project
+cd "$HOME\Documents\CardioTrustAI\src\CardioTrustAI.Backend\CardioTrustAI.PythonAPI"
+
+# 2. Set Miniconda paths
+$conda = "$env:USERPROFILE\miniconda3\Scripts\conda.exe"
+$globalPython = "$env:USERPROFILE\miniconda3\python.exe"
+
+# 3. Verify Miniconda
+if (!(Test-Path $conda) -or !(Test-Path $globalPython)) {
+    throw "Miniconda was not found at the expected location."
+}
+
+& $globalPython --version
+& $conda --version
+
+# 4. Create Python 3.12 environment only if it does not exist
+if (!(Test-Path ".venv\python.exe")) {
+    & $conda create -p "$PWD\.venv" python=3.12 -y
+    if ($LASTEXITCODE -ne 0) {
+        throw "Python environment creation failed."
+    }
+}
+
+# 5. Upgrade pip
+& "$PWD\.venv\python.exe" -m pip install --upgrade pip
+if ($LASTEXITCODE -ne 0) {
+    throw "pip upgrade failed."
+}
+
+# 6. Install API and ECG research packages
+& "$PWD\.venv\python.exe" -m pip install "fastapi[standard]" numpy pandas scipy matplotlib scikit-learn wfdb
+if ($LASTEXITCODE -ne 0) {
+    throw "Package installation failed."
+}
+
+# 7. Verify package installation
+& "$PWD\.venv\python.exe" -c "import fastapi, numpy, pandas, scipy, matplotlib, sklearn, wfdb; print('All packages imported successfully')"
+if ($LASTEXITCODE -ne 0) {
+    throw "Package verification failed."
+}
+
+# 8. Save installed dependencies
+& "$PWD\.venv\python.exe" -m pip freeze | Out-File -Encoding utf8 requirements.txt
+
+# 9. Create the app folder if needed
+New-Item -ItemType Directory -Force -Path "app" | Out-Null
+
+# 10. Create main.py if it does not exist
+if (!(Test-Path "app\main.py")) {
+@'
+from fastapi import FastAPI
+
+app = FastAPI(
+    title="CardioTrustAI Python API",
+    description="Python backend for ECG analysis",
+    version="1.0.0",
+)
+
+@app.get("/")
+def home():
+    return {
+        "message": "CardioTrustAI Python API is running",
+        "status": "healthy",
+    }
+
+@app.get("/api/v1/ai/health")
+def health_check():
+    return {
+        "service": "CardioTrustAI AI Backend",
+        "status": "healthy",
+    }
+'@ | Set-Content -Encoding utf8 "app\main.py"
+}
+
+
+# 11. Configure HTTPS for local development
+
+# Create a local development certificate if needed
+$certFolder = Join-Path $PWD "certs"
+$certPath = Join-Path $certFolder "localhost.pem"
+$keyPath = Join-Path $certFolder "localhost-key.pem"
+
+New-Item -ItemType Directory -Force -Path $certFolder | Out-Null
+
+# Check whether OpenSSL is installed
+$openssl = Get-Command openssl -ErrorAction SilentlyContinue
+
+if (!(Test-Path $certPath) -or !(Test-Path $keyPath)) {
+    if (!$openssl) {
+        throw "OpenSSL is required to create the local HTTPS certificate. Install OpenSSL or use your trusted local certificate tool."
+    }
+
+    & openssl.Source req -x509 -newkey rsa:2048 -nodes `
+        -keyout $keyPath `
+        -out $certPath `
+        -days 365 `
+        -subj "/CN=localhost" `
+        -addext "subjectAltName=DNS:localhost,IP:127.0.0.1"
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "HTTPS certificate creation failed."
+    }
+}
+
+# 12. Start the API over HTTPS
+& "$PWD\.venv\python.exe" -m uvicorn app.main:app `
+    --reload `
+    --host 127.0.0.1 `
+    --port 8001 `
+    --ssl-certfile "$certPath" `
+    --ssl-keyfile "$keyPath"
+
+
+
+cd "$HOME\Documents\CardioTrustAI\src\CardioTrustAI.Backend\CardioTrustAI.PythonAPI"
+
+# Install Jupyter Notebook in your existing Python environment
+& "$PWD\.venv\python.exe" -m pip install notebook ipykernel
+
+# Create the experiments folder
+New-Item -ItemType Directory -Force -Path "experiments" | Out-Null
+
+# Start Jupyter Notebook in the project directory
+& "$PWD\.venv\python.exe" -m notebook --notebook-dir="$PWD\experiments"
