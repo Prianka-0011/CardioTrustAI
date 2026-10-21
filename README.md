@@ -224,3 +224,27 @@ New-Item -ItemType Directory -Force -Path "experiments" | Out-Null
 
 # Start Jupyter Notebook in the project directory
 & "$PWD\.venv\python.exe" -m notebook --notebook-dir="$PWD\experiments"
+
+
+------------------------------------------------
+# 1. Go to the CardioTrustAI Python project
+cd "$HOME\Documents\CardioTrustAI\src\CardioTrustAI.Backend\CardioTrustAI.PythonAPI"
+
+# 2. Install the packages for ECG experiments and Jupyter
+& "$PWD\.venv\python.exe" -m pip install "fastapi[standard]" notebook ipykernel numpy pandas scipy matplotlib scikit-learn wfdb
+
+if ($LASTEXITCODE -ne 0) {
+    throw "Package installation failed."
+}
+
+# 3. Register this Python environment as a Jupyter kernel
+& "$PWD\.venv\python.exe" -m ipykernel install --user --name cardiotrustai --display-name "Python (CardioTrustAI)"
+
+if ($LASTEXITCODE -ne 0) {
+    throw "Jupyter kernel registration failed."
+}
+
+# 4. Verify all packages
+& "$PWD\.venv\python.exe" -c "import fastapi, pandas, numpy, scipy, matplotlib, sklearn, wfdb, ipykernel; print('All CardioTrustAI packages are installed successfully.')"
+
+Write-Host "Setup complete. Restart Jupyter and select the CardioTrustAI kernel."
