@@ -60,8 +60,10 @@ export class EcgRordingListComponent implements OnInit {
   getRecordings(): void {
     this.recordingService.getRecordings().subscribe({
       next: data => {
-        this.recordings = data.filter(recording => !recording.isDeleted);
+        this.recordings = data
+        // .filter(recording => !recording.isDeleted);
         this.applyFilter();
+        console.log(this.recordings)
       },
       error: error => console.error('Failed to load recordings:', error)
     });

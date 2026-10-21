@@ -15,6 +15,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAuthorization();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AngularDevelopment", policy =>
+    {
+        policy
+            .WithOrigins("https://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
@@ -47,6 +58,8 @@ app.UseGlobalExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseCors("AngularDevelopment");
 
 app.UseAuthorization();
 
