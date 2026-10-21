@@ -1,16 +1,36 @@
 CardioTrustAI/
-├── backend/
-│   └── CardioLens.Api/
-├── frontend/
-│   └── cardiolens-ui/
-├── ai-service/
-│   ├── app/
-│   ├── models/
-│   └── requirements.txt
-├── data/
-│   ├── raw/
-│   └── processed/
-└── docker-compose.yml
+├── CardioTrustAI.slnx
+├── docker-compose.yml
+├── Dockerfile
+└── src/
+    ├── CardioTrustAI.Backend/
+    │   ├── CardioTrustAI.API/
+    │   ├── CardioTrustAI.Application/
+    │   ├── CardioTrustAI.Domain/
+    │   ├── CardioTrustAI.Infrastructure/
+    │   │
+    │   └── CardioTrustAI.AI/
+    │       ├── app/
+    │       │   ├── main.py
+    │       │   ├── api/
+    │       │   │   └── endpoints/
+    │       │   ├── application/
+    │       │   │   └── services/
+    │       │   │       ├── ecg_service.py
+    │       │   │       ├── prediction_service.py
+    │       │   │       └── evaluation_service.py
+    │       │   ├── domain/
+    │       │   ├── infrastructure/
+    │       │   │   ├── datasets/
+    │       │   │   └── models/
+    │       │   ├── schemas/
+    │       │   └── core/
+    │       ├── tests/
+    │       ├── requirements.txt
+    │       └── Dockerfile
+    │
+    └── WebSpa/
+        └── ...
 
 dotnet new sln -n CardioTrustAI
 
