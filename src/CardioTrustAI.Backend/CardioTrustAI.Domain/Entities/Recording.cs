@@ -38,7 +38,7 @@ public class Recording
    
     public DateTime? UploadedAtUtc { get; set; } = DateTime.UtcNow;
 
-    public Guid? Status { get; set; } = RecordingStatus.Uploaded;
+    public Guid? Status { get; set; } 
 
     public bool IsDeleted { get; set; } = false;
 }

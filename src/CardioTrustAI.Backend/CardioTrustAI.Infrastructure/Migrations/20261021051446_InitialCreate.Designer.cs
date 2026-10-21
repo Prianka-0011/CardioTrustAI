@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CardioTrustAI.Infrastructure.Migrations
 {
     [DbContext(typeof(CardioTrustAIDbContext))]
-    [Migration("20261020212301_InitialCreate")]
+    [Migration("20261021051446_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
