@@ -248,3 +248,20 @@ if ($LASTEXITCODE -ne 0) {
 & "$PWD\.venv\python.exe" -c "import fastapi, pandas, numpy, scipy, matplotlib, sklearn, wfdb, ipykernel; print('All CardioTrustAI packages are installed successfully.')"
 
 Write-Host "Setup complete. Restart Jupyter and select the CardioTrustAI kernel."
+
+Standard AI Research Process
+1. Define the research problem
+2. Collect the dataset
+3. Explore and understand the data
+4. Clean and prepare the data
+5. Split the data into training, validation, and test sets
+6. Choose an AI model
+7. Train the model
+8. Validate and improve the model
+9. Test the final model on unseen data
+10. Evaluate and analyze the results
+11. Explain predictions and measure uncertainty
+12. Compare results with existing methods
+13. Document findings and write the research paper
+14. Integrate the model into the application
+15. Test real-world performance and limitations
