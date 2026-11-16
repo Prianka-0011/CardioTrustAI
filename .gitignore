@@ -90,3 +90,6 @@ venv/
 *.swp
 *.orig
 *~
+# PTB-XL dataset and AI training data
+data/
+**/data/
